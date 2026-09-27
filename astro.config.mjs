@@ -14,4 +14,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory' },
+  // Keep scroll-driven animation rules exactly as written. The default CSS minifier
+  // folds animation-timeline into the animation shorthand, which browsers reject.
+  vite: { build: { cssMinify: 'esbuild' } },
 });
