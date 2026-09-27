@@ -94,3 +94,8 @@
   .site .form-msg,.site .form-msg-icon path,.site .field-error{animation:none}
 }
 
+
+/* Home hero P outline: keep clear space below the header on narrower screens */
+@media (max-width:1023px){
+  .site .hero-mark{top:clamp(20px,5vw,40px)}
+}
