@@ -8,16 +8,20 @@
 .video-toggle.is-paused .icon-pause { display: none; }
 
 /* Form states */
-.notice-error { border-color: #e0685c; background: rgba(224, 104, 92, .08); }
+.notice.notice-error { border-color: #e0685c; background: rgba(224, 104, 92, .08); }
 .form button[disabled] { opacity: .6; cursor: progress; }
 
 /* Spam trap: hidden from people, visible to bots */
-.honeypot { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.site .honeypot { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-/* Phones and tablets (stacked layout): show the hero video first, then the headline and buttons */
+/* Phones and tablets (stacked layout): headline and intro, then the video, then the buttons.
+   Prefixed with .site so these win over the page stylesheets, which load after this file. */
 @media (max-width:1023px){
-  .hero-grid > .hero-media,
-  .hero-grid > .page-media{order:-1}
-  .anim-on .hero-grid > .hero-media.in,
-  .anim-on .hero-grid > .page-media.in{animation-delay:.05s}
+  .site .hero-grid{row-gap:0}
+  .site .hero-grid > div:first-child{display:contents}
+  .site .hero-grid > .hero-media,
+  .site .hero-grid > .page-media{order:1;margin-top:4px;margin-bottom:32px}
+  .site .hero-grid .hero-paths,
+  .site .hero-grid .hero-ctas,
+  .site .hero-grid .trust-line{order:2}
 }
