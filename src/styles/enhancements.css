@@ -13,3 +13,11 @@
 
 /* Spam trap: hidden from people, visible to bots */
 .honeypot { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Phones and tablets (stacked layout): show the hero video first, then the headline and buttons */
+@media (max-width:1023px){
+  .hero-grid > .hero-media,
+  .hero-grid > .page-media{order:-1}
+  .anim-on .hero-grid > .hero-media.in,
+  .anim-on .hero-grid > .page-media.in{animation-delay:.05s}
+}
