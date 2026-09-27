@@ -325,3 +325,22 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .reassure{margin:-20px 0 32px;font-size:15px;font-weight:600;color:#D9E1DC;display:flex;gap:10px;align-items:center}
 .reassure::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--laser);box-shadow:0 0 8px var(--laser)}
 .a-card h3{font-size:clamp(28px,2.6vw,36px)}
+
+/* "Who it's for" icons: draw in on scroll, gentle glow, and a small motion on hover */
+.a-icon{transition:box-shadow .4s var(--ease),border-color .4s,background .4s}
+.a-icon svg{overflow:visible;transition:transform .6s var(--ease)}
+.a-card:hover .a-icon{border-color:var(--laser);background:rgba(76,195,138,.14);box-shadow:0 0 22px var(--laser-a)}
+.a-card:hover .a-icon--plus svg{transform:rotate(90deg)}
+.a-card:hover .a-icon--restart svg{transform:rotate(-360deg);transition-duration:.9s}
+.a-card:hover .a-icon--rise svg{transform:translate(2px,-2px)}
+@keyframes iconDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes iconGlow{0%,100%{box-shadow:0 0 0 rgba(76,195,138,0)}50%{box-shadow:0 0 18px var(--laser-a)}}
+@media (prefers-reduced-motion:no-preference){
+  .anim-on .a-icon{animation:iconGlow 3.6s ease-in-out infinite}
+  .anim-on .a-card:nth-child(2) .a-icon{animation-delay:1.2s}
+  .anim-on .a-card:nth-child(3) .a-icon{animation-delay:2.4s}
+  @supports (animation-timeline: view()){
+    .anim-on .a-icon path{stroke-dasharray:1;animation:iconDraw linear both;animation-timeline:view();animation-range:entry 30% cover 40%}
+    .anim-on .a-icon path + path{animation-range:entry 50% cover 45%}
+  }
+}
