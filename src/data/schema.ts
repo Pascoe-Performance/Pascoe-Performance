@@ -39,7 +39,7 @@ const business = {
   url: abs('/'),
   description: site.description,
   areaServed: site.areaServed,
-  image: abs('/media/og-image.jpg'),
+  image: abs('/media/share-logo.jpg'),
   logo: abs('/favicon.svg'),
   founder: { '@id': ids.coach },
   ...(site.contact.email ? { email: site.contact.email } : {}),

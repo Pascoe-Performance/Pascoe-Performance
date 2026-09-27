@@ -11,7 +11,7 @@ interface Props {
 const { page, hasForm = true } = Astro.props;
 const meta = pages[page];
 const canonical = `${site.url}${meta.path}`;
-const ogImage = `${site.url}/media/og-image.jpg`;
+const ogImage = `${site.url}/media/share-logo.jpg`;
 const contactHref = hasForm ? '#inquiry' : '/#inquiry';
 const schema = schemaFor(page);
 ---
@@ -33,12 +33,14 @@ const schema = schemaFor(page);
     <meta property="og:description" content={meta.description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="Ben Pascoe coaching a client in the gym" />
+    <meta property="og:image:alt" content="Pascoe Performance logo" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={meta.title} />
     <meta name="twitter:description" content={meta.description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Ben Pascoe coaching a client in the gym" />
+    <meta name="twitter:image:alt" content="Pascoe Performance logo" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
