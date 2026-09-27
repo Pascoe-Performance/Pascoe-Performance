@@ -3,25 +3,48 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ---------- Mobile menu ---------- */
+// Opens with a slide-down reveal and dims the page behind it.
 const menuBtn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
 const menu = document.getElementById('mobile-menu');
+const backdrop = document.querySelector<HTMLElement>('[data-menu-backdrop]');
+const root = document.documentElement;
+const MENU_MS = 380;
+let menuTimer = 0;
 
 function setMenu(open: boolean) {
   if (!menuBtn || !menu) return;
-  menu.hidden = !open;
+  const isOpen = root.classList.contains('menu-open');
   menuBtn.setAttribute('aria-expanded', String(open));
   menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  window.clearTimeout(menuTimer);
+
+  if (open) {
+    menu.hidden = false;
+    if (backdrop) backdrop.hidden = false;
+    void menu.offsetHeight; // let the closed state render first so the transition runs
+    root.classList.add('menu-open');
+  } else {
+    root.classList.remove('menu-open');
+    const hide = () => {
+      menu.hidden = true;
+      if (backdrop) backdrop.hidden = true;
+    };
+    if (isOpen && !reduceMotion.matches) menuTimer = window.setTimeout(hide, MENU_MS);
+    else hide();
+  }
 }
 
-menuBtn?.addEventListener('click', () => setMenu(menu?.hidden ?? true));
+menuBtn?.addEventListener('click', () => setMenu(!root.classList.contains('menu-open')));
+backdrop?.addEventListener('click', () => setMenu(false));
 menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
 document.querySelector('.header-cta')?.addEventListener('click', () => setMenu(false));
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && menu && !menu.hidden) {
+  if (e.key === 'Escape' && root.classList.contains('menu-open')) {
     setMenu(false);
     menuBtn?.focus();
   }
 });
+window.matchMedia('(min-width: 1024px)').addEventListener?.('change', (e) => e.matches && setMenu(false));
 // Close the menu if the browser restores the page from its back/forward cache.
 window.addEventListener('pageshow', () => setMenu(false));
 

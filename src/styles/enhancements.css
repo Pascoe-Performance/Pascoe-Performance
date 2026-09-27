@@ -1,6 +1,29 @@
 /* Small additions for the production build (loaded after the page styles). */
 
-.mobile-panel[hidden] { display: none; }
+.mobile-panel[hidden], .menu-backdrop[hidden] { display: none; }
+
+/* Mobile menu: drops down over the page with a dimmed backdrop */
+.site .mobile-panel{position:absolute;left:0;right:0;top:100%;padding:8px clamp(20px,4vw,48px) 28px;background:rgba(5,7,6,.97);border-bottom:1px solid var(--edge);box-shadow:0 40px 80px -30px rgba(0,0,0,.9);clip-path:inset(0 0 100% 0);opacity:0;transform:translateY(-8px);transition:clip-path .38s cubic-bezier(.2,.8,.2,1),opacity .28s ease,transform .38s cubic-bezier(.2,.8,.2,1)}
+.menu-open .site .mobile-panel{clip-path:inset(0 0 -120px 0);opacity:1;transform:none}
+.site .mobile-panel > *{opacity:0;transform:translateY(-10px);transition:opacity .2s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+.menu-open .site .mobile-panel > *{opacity:1;transform:none;transition-duration:.35s,.4s}
+.menu-open .site .mobile-panel > :nth-child(1){transition-delay:.06s}
+.menu-open .site .mobile-panel > :nth-child(2){transition-delay:.1s}
+.menu-open .site .mobile-panel > :nth-child(3){transition-delay:.14s}
+.menu-open .site .mobile-panel > :nth-child(4){transition-delay:.18s}
+.menu-open .site .mobile-panel > :nth-child(5){transition-delay:.22s}
+.menu-backdrop{position:fixed;inset:0;z-index:45;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;transition:opacity .38s ease}
+.menu-open .menu-backdrop{opacity:1}
+.menu-open{overflow:hidden}
+
+/* Menu button: two bars turn into an X */
+.menu-icon .bar{transform-origin:12px 12px;transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+.menu-open .menu-icon .bar-top{transform:rotate(45deg) translateY(4px)}
+.menu-open .menu-icon .bar-bot{transform:rotate(-45deg) translateY(-4px)}
+
+@media (prefers-reduced-motion:reduce){
+  .site .mobile-panel,.site .mobile-panel > *,.menu-backdrop,.menu-icon .bar{transition:none}
+}
 
 /* Hero video play/pause toggle */
 .video-toggle .icon-play { display: none; }
