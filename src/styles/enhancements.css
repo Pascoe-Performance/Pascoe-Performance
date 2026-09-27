@@ -25,3 +25,7 @@
   .site .hero-grid .hero-ctas,
   .site .hero-grid .trust-line{order:2}
 }
+
+/* "Start the conversation" section: more room under the label, heading sits closer to the form */
+.site #inquiry .kicker{margin-bottom:clamp(30px,3vw,44px)}
+.site #inquiry .section-head{margin-bottom:clamp(18px,2vw,26px)}
