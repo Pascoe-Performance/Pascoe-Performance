@@ -277,3 +277,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .path-card .path-link::after{content:"";position:absolute;inset:0;z-index:6;border-radius:inherit}
 .path-card .path-link:focus-visible{outline:none}
 .path-card:has(.path-link:focus-visible){outline:2px solid var(--laser);outline-offset:4px}
+
+/* Hero → ticker → Choose your path: tighter spacing */
+.hero .hero-grid{padding-bottom:clamp(56px,6vw,88px)}
+.section--after-ticker{padding-top:clamp(56px,7vw,104px)}
+.ticker-item{margin:0}
