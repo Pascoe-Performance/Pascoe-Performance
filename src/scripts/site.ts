@@ -138,18 +138,90 @@ if (form) {
     });
   });
 
-  const showStatus = (text: string, isError = false) => {
+  // Status panel (sent / not sent), styled to match the site.
+  const ICONS = {
+    ok: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    err: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path pathLength="1" d="M12 5.5v8"/><path pathLength="1" d="M12 18.5h.01"/></svg>',
+  };
+  const showStatus = (title: string, text: string, isError = false) => {
     if (!status) return;
     status.innerHTML = '';
-    const p = document.createElement('p');
-    p.className = isError ? 'notice notice-error' : 'notice';
-    p.textContent = text;
-    status.appendChild(p);
+    const box = document.createElement('div');
+    box.className = `form-msg ${isError ? 'form-msg--error' : 'form-msg--ok'}`;
+    box.innerHTML = `<span class="form-msg-icon">${isError ? ICONS.err : ICONS.ok}</span><div><p class="form-msg-title"></p><p class="form-msg-text"></p></div>`;
+    box.querySelector('.form-msg-title')!.textContent = title;
+    box.querySelector('.form-msg-text')!.textContent = text;
+    status.appendChild(box);
   };
+
+  // Field checks with inline messages instead of the browser's default pop-ups.
+  const fieldError = (el: HTMLElement, host: HTMLElement, message: string) => {
+    host.classList.add('is-invalid');
+    let msg = host.querySelector<HTMLElement>(':scope > .field-error');
+    if (!msg) {
+      msg = document.createElement('p');
+      msg.className = 'field-error';
+      msg.id = `${el.id || 'interest'}-${form.dataset.page || 'f'}-error`;
+      host.appendChild(msg);
+    }
+    msg.textContent = message;
+    el.setAttribute('aria-invalid', 'true');
+    const described = (el.getAttribute('aria-describedby') || '').split(' ').filter(Boolean);
+    if (!described.includes(msg.id)) el.setAttribute('aria-describedby', [...described, msg.id].join(' '));
+  };
+  const clearError = (el: HTMLElement, host: HTMLElement | null) => {
+    if (!host) return;
+    host.classList.remove('is-invalid');
+    const msg = host.querySelector<HTMLElement>(':scope > .field-error');
+    el.removeAttribute('aria-invalid');
+    if (msg) {
+      const rest = (el.getAttribute('aria-describedby') || '').split(' ').filter((id) => id && id !== msg.id);
+      if (rest.length) el.setAttribute('aria-describedby', rest.join(' '));
+      else el.removeAttribute('aria-describedby');
+      msg.remove();
+    }
+  };
+  const nameInput = form.querySelector<HTMLInputElement>('input[name="name"]')!;
+  const emailInput = form.querySelector<HTMLInputElement>('input[name="email"]')!;
+  const interestSet = form.querySelector<HTMLFieldSetElement>('fieldset')!;
+
+  const validate = () => {
+    const problems: HTMLElement[] = [];
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    clearError(nameInput, nameInput.closest('.field'));
+    clearError(emailInput, emailInput.closest('.field'));
+    clearError(radios[0], interestSet);
+    if (!name) {
+      fieldError(nameInput, nameInput.closest('.field')!, 'Please enter your name.');
+      problems.push(nameInput);
+    }
+    if (!email) {
+      fieldError(emailInput, emailInput.closest('.field')!, 'Please enter your email so Ben can reply.');
+      problems.push(emailInput);
+    } else if (!emailInput.checkValidity() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      fieldError(emailInput, emailInput.closest('.field')!, 'That email doesn’t look right. Please check it.');
+      problems.push(emailInput);
+    }
+    if (!radios.some((r) => r.checked)) {
+      fieldError(radios[0], interestSet, 'Please choose a training option, or pick Help Me Choose.');
+      problems.push(radios[0]);
+    }
+    return problems;
+  };
+
+  nameInput.addEventListener('input', () => clearError(nameInput, nameInput.closest('.field')));
+  emailInput.addEventListener('input', () => clearError(emailInput, emailInput.closest('.field')));
+  radios.forEach((r) => r.addEventListener('change', () => clearError(radios[0], interestSet)));
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!form.reportValidity()) return;
+    const problems = validate();
+    if (problems.length) {
+      if (status) status.innerHTML = '';
+      problems[0].focus();
+      return;
+    }
 
     const endpoint = form.dataset.endpoint || '/';
     const data = new FormData(form);
@@ -169,10 +241,11 @@ if (form) {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       form.reset();
       syncChoices();
-      showStatus('Thanks — your inquiry has been sent. Ben will be in touch soon.');
+      showStatus('Inquiry sent', 'Thanks for reaching out. Ben will be in touch soon.');
     } catch {
       showStatus(
-        'Sorry, your inquiry could not be sent. Please try again in a moment. Your details are still in the form.',
+        'Your inquiry didn’t send',
+        'Something went wrong on our end. Your details are still in the form, so please try again in a moment.',
         true,
       );
     } finally {
