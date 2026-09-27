@@ -29,3 +29,11 @@
 /* "Start the conversation" section: more room under the label, heading sits closer to the form */
 .site #inquiry .kicker{margin-bottom:clamp(30px,3vw,44px)}
 .site #inquiry .section-head{margin-bottom:clamp(18px,2vw,26px)}
+
+/* Arrival cue: the form's edge glows once when a button brings the visitor to it */
+.site .form[data-inquiry]::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;border:1px solid var(--laser);box-shadow:0 0 0 1px var(--laser-a),0 0 28px var(--laser-a),inset 0 0 18px rgba(76,195,138,.12);opacity:0}
+.site .form[data-inquiry].is-arrived::after{animation:formArrive 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes formArrive{0%{opacity:0}22%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .site .form[data-inquiry].is-arrived::after{animation:none}
+}

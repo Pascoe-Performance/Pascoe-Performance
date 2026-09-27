@@ -63,6 +63,43 @@ if (form) {
   const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
   const submitLabel = form.querySelector<HTMLElement>('[data-submit-label]');
 
+  // Arrival cue: when a link brings the visitor to the form, glow its edge once.
+  // On desktop, also place the cursor in the first field (skipped on touch screens,
+  // where it would open the keyboard over the form).
+  const section = document.getElementById('inquiry');
+  const firstField = form.querySelector<HTMLInputElement>('input[name="name"]');
+  const canFocus = window.matchMedia('(pointer: fine)').matches;
+  let arriveTimer = 0;
+
+  const arrive = () => {
+    form.classList.remove('is-arrived');
+    void form.offsetWidth; // restart the animation if it already ran
+    form.classList.add('is-arrived');
+    if (canFocus && firstField && !firstField.value) firstField.focus({ preventScroll: true });
+  };
+
+  const arriveAfterScroll = () => {
+    window.clearTimeout(arriveTimer);
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      window.removeEventListener('scrollend', finish);
+      arrive();
+    };
+    const hasScrollEnd = 'onscrollend' in window;
+    if (hasScrollEnd) window.addEventListener('scrollend', finish, { once: true });
+    // Fallback: browsers without scrollend, or no scroll needed because the form is already in view.
+    arriveTimer = window.setTimeout(finish, reduceMotion.matches ? 50 : hasScrollEnd ? 1600 : 900);
+  };
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href="#inquiry"], a[href="/#inquiry"]').forEach((a) => {
+    a.addEventListener('click', () => {
+      if (section && new URL(a.href).pathname === location.pathname) arriveAfterScroll();
+    });
+  });
+  if (location.hash === '#inquiry') arriveAfterScroll();
+
   const syncChoices = () =>
     radios.forEach((r) => r.closest('.choice')?.classList.toggle('is-on', r.checked));
   radios.forEach((r) => r.addEventListener('change', syncChoices));
