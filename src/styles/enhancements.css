@@ -37,3 +37,12 @@
 @media (prefers-reduced-motion:reduce){
   .site .form[data-inquiry].is-arrived::after{animation:none}
 }
+
+/* Less empty space between the header and the start of each page */
+.site .hero-grid,
+.site .hero .hero-grid,
+.site .page-hero .hero-grid{padding-top:clamp(24px,3vw,44px)}
+@media (min-width:1024px){
+  /* Inner pages: start the text at the top instead of centring it against the taller video */
+  .site .page-hero .hero-grid{align-items:start}
+}
