@@ -266,7 +266,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .trust-line li{display:flex;align-items:center;gap:8px}
 .trust-line li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--laser);box-shadow:0 0 8px var(--laser)}
 .card-fit-bg--fb{background-image:url("/media/football-performance-poster.jpg")}
-.nutri-slim{padding:clamp(56px,7vw,96px) 0}
+.nutri-slim{padding:clamp(44px,5vw,72px) 0}
 .nutri-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end}
 .nutri-row > p{margin:0;font-size:19px;color:var(--muted);max-width:48ch}
 @media (max-width:1023px){.nutri-row{grid-template-columns:minmax(0,1fr)}}
@@ -280,5 +280,4 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 /* Hero → ticker → Choose your path: tighter spacing */
 .hero .hero-grid{padding-bottom:clamp(56px,6vw,88px)}
-.section--after-ticker{padding-top:clamp(56px,7vw,104px)}
 .ticker-item{margin:0}
