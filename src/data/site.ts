@@ -26,7 +26,7 @@ export type PageKey = 'home' | 'personal-training' | 'football-performance' | 'a
 export const pages: Record<PageKey, { path: string; title: string; description: string; nav?: string }> = {
   home: {
     path: '/',
-    title: 'Personal Training & Football Performance | Pascoe Performance',
+    title: 'Hamilton Personal Training & Football Performance | Pascoe Performance',
     description:
       'Personal training in Hamilton & Ancaster and football performance training across the Greater Toronto & Hamilton Area with coach Ben Pascoe.',
   },
@@ -40,7 +40,7 @@ export const pages: Record<PageKey, { path: string; title: string; description: 
   'football-performance': {
     path: '/football-performance/',
     nav: 'Football Performance',
-    title: 'Football Performance Training · Hamilton & GTA | Pascoe Performance',
+    title: 'Football Performance Training in Hamilton & GTA | Pascoe Performance',
     description:
       'Football performance training for high school, university, CFL and professional-level athletes. Group and one-on-one speed, strength and movement coaching.',
   },
