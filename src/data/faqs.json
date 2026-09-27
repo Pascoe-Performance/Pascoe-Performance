@@ -1,0 +1,188 @@
+{
+  "home": [
+    {
+      "category": "",
+      "items": [
+        {
+          "id": "which-path",
+          "q": "Should I choose personal training or football performance training?",
+          "a": "Choose Personal Training for general fitness goals such as strength, conditioning, mobility, body composition or confidence in the gym. Choose Football Performance Training if you are a high school, university, CFL or professional-level football athlete developing speed, skill and power. Not sure? Send an inquiry, select Help Me Choose and share your goals."
+        },
+        {
+          "id": "nutrition-support",
+          "q": "Is nutrition support available?",
+          "a": "Yes. Nutrition guidance supports both training paths, from everyday eating habits to fueling and recovery for athletes. Ask Ben what is included in the program you are considering."
+        },
+        {
+          "id": "getting-started",
+          "q": "How do I get started?",
+          "a": "Send an inquiry below and choose Personal Training, Group Football Training, One-on-One Football Coaching or Help Me Choose. Share your goals and general availability so Ben can discuss your next step."
+        }
+      ]
+    }
+  ],
+  "personal-training": [
+    {
+      "category": "Getting started",
+      "items": [
+        {
+          "id": "beginners",
+          "q": "I am a complete beginner. Is personal training right for me?",
+          "a": "Yes. Coaching starts from your current fitness and experience, and technique is taught before intensity increases. You do not need to know your way around a gym to start."
+        },
+        {
+          "id": "pt-age",
+          "q": "Is there a minimum age for personal training?",
+          "a": "Personal training is for clients aged 16 and older. For clients aged 16 or 17, a parent or legal guardian should send the inquiry using their own contact details."
+        },
+        {
+          "id": "first-session",
+          "q": "What happens in my first personal training session?",
+          "a": "Your first session starts with a conversation about your goals, training experience, availability and any injuries or concerns. It also includes an assessment of how you move and a body composition scan, so training can be built around your starting point."
+        },
+        {
+          "id": "what-to-bring",
+          "q": "What should I wear and bring?",
+          "a": "Comfortable workout clothes, supportive athletic shoes and a water bottle."
+        }
+      ]
+    },
+    {
+      "category": "Sessions and logistics",
+      "items": [
+        {
+          "id": "training-location",
+          "q": "Where does personal training take place?",
+          "a": "Personal training sessions take place at Anytime Fitness in the Hamilton and Ancaster area of Ontario. <span class=\"ph-text\">[Club address(es)]</span>"
+        },
+        {
+          "id": "session-length",
+          "q": "How long is a personal training session?",
+          "a": "Personal training sessions are one hour long."
+        },
+        {
+          "id": "how-often",
+          "q": "How often should I do personal training?",
+          "a": "It depends on your goals, schedule and budget. Many people start with two or three sessions a week while learning the basics, while others train once a week and follow a plan on their own between sessions. Ben will help you choose a frequency that fits your life."
+        },
+        {
+          "id": "pt-cost",
+          "q": "How much does personal training cost?",
+          "a": "Pricing depends on how often you train and is discussed with Ben once you inquire, so you can choose an option that suits your goals and schedule."
+        }
+      ]
+    },
+    {
+      "category": "Health and nutrition",
+      "items": [
+        {
+          "id": "injuries",
+          "q": "Can I do personal training if I have an injury or health condition?",
+          "a": "Please raise injuries or health conditions privately during your first conversation, not in the inquiry form. Personal training is not a substitute for medical care or rehabilitation, so if you are recovering from an injury or managing a condition, check with your doctor or physiotherapist before starting."
+        },
+        {
+          "id": "body-composition",
+          "q": "Can personal training help with weight loss or body composition?",
+          "a": "Personal training can support body composition goals by combining consistent strength and conditioning work with practical nutrition guidance. Results vary from person to person, and no specific result can be guaranteed."
+        },
+        {
+          "id": "meal-plans",
+          "q": "Do you provide meal plans?",
+          "a": "<span class=\"ph-text\">[OWNER TO CONFIRM: whether individual meal plans are offered, who provides them and their qualifications]</span> Nutrition guidance covers practical eating habits that support your energy and training."
+        }
+      ]
+    },
+    {
+      "category": "Other",
+      "items": [
+        {
+          "id": "football-experience",
+          "q": "Do I need football experience?",
+          "a": "No. Personal training is for anyone with fitness goals. Football athletes can also look at Football Performance Training."
+        }
+      ]
+    }
+  ],
+  "football-performance": [
+    {
+      "category": "Deciding on training",
+      "items": [
+        {
+          "id": "football-location",
+          "q": "Where does football performance training take place?",
+          "a": "Football training takes place on turf and in the gym. <span class=\"ph-text\">[VENUE NAME AND AREA]</span>"
+        },
+        {
+          "id": "football-audience",
+          "q": "What ages and experience levels are accepted?",
+          "a": "Training is for athletes from high school age through university, Canadian Football League (CFL) and professional levels. It is not offered to younger children. Share your level of play when you inquire so training can be matched to your experience."
+        },
+        {
+          "id": "group-vs-one-on-one",
+          "q": "What is the difference between group and one-on-one coaching?",
+          "a": "Group Football Training takes place in structured sessions with other athletes, working toward shared objectives. One-on-One Football Coaching is individual time with Ben, planned around your own development priorities."
+        },
+        {
+          "id": "in-season",
+          "q": "How does training fit around the football season?",
+          "a": "The off-season is usually the main window for building speed, strength and power. During the season, training has to work around practices and games, so the amount and intensity are planned around your schedule."
+        },
+        {
+          "id": "training-cost",
+          "q": "How much does football training cost?",
+          "a": "Pricing depends on the training option and how often you train. It is discussed with Ben once you inquire."
+        },
+        {
+          "id": "after-inquiry",
+          "q": "What happens after I send an inquiry?",
+          "a": "Ben follows up to talk it through. Sending an inquiry does not commit you to a program or package."
+        }
+      ]
+    },
+    {
+      "category": "Before you start",
+      "items": [
+        {
+          "id": "parents",
+          "q": "Can a parent inquire for a high school athlete?",
+          "a": "Yes. A parent or legal guardian should send the inquiry using their own contact details. Please do not include the athlete's identifying or medical information in the form."
+        },
+        {
+          "id": "who-coaches",
+          "q": "Who coaches high school athletes, and how big are the groups?",
+          "a": "Ben Pascoe leads the sessions, with support from other coaches. High school athletes train together in one small group, so classes stay small and each athlete gets coaching attention."
+        },
+        {
+          "id": "what-to-bring-football",
+          "q": "What should athletes bring?",
+          "a": "Athletic clothing and a water bottle. Footwear depends on the training surface and facility. <span class=\"ph-text\">[CONFIRM: turf and gym footwear rules]</span>"
+        },
+        {
+          "id": "recruiting",
+          "q": "Will training help me get recruited or earn a scholarship?",
+          "a": "Training develops speed, strength and movement that carry over to the field, but no training program can guarantee recruitment, a scholarship or a roster spot."
+        }
+      ]
+    },
+    {
+      "category": "Speed & Skills Camp",
+      "items": [
+        {
+          "id": "previous-camp-duration",
+          "q": "How long was the previous Speed & Skills camp?",
+          "a": "The previous camp ran for three months, with three training sessions per week and a customized training plan."
+        },
+        {
+          "id": "body-scan",
+          "q": "Does every program include a body scan?",
+          "a": "Not every program. A body scan and nutrition consultation were part of the previous Speed &amp; Skills camp. For football training, inclusions are confirmed when you inquire."
+        },
+        {
+          "id": "next-camp",
+          "q": "When is the next Speed & Skills camp?",
+          "a": "Future camp dates have not been announced. To ask about upcoming camps, send an inquiry, choose Group Football Training or Help Me Choose, and mention the camp in your message."
+        }
+      ]
+    }
+  ]
+}

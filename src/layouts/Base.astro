@@ -1,0 +1,61 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, pages, type PageKey } from '../data/site';
+import { schemaFor } from '../data/schema';
+
+interface Props {
+  page: PageKey;
+  hasForm?: boolean;
+}
+const { page, hasForm = true } = Astro.props;
+const meta = pages[page];
+const canonical = `${site.url}${meta.path}`;
+const ogImage = `${site.url}/media/og-image.jpg`;
+const contactHref = hasForm ? '#inquiry' : '/#inquiry';
+const schema = schemaFor(page);
+---
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="canonical" href={canonical} />
+    {site.preview && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#050706" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Ben Pascoe coaching a client in the gym" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Ben Pascoe coaching a client in the gym" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+  <body>
+    <div class="site anim-on enter-a">
+      <a class="skip" href="#main">Skip to content</a>
+      <Header current={page} contactHref={contactHref} />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer current={page} contactHref={contactHref} />
+    </div>
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

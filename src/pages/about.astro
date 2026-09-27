@@ -1,0 +1,163 @@
+---
+import '../styles/global.css';
+import '../styles/pages/about.css';
+import '../styles/enhancements.css';
+import Base from '../layouts/Base.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+---
+<Base page="about" hasForm={true}>
+<section class="page-hero" id="top" aria-labelledby="page-title">
+<div class="tech-grid" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
+<div class="wrap hero-grid">
+<div>
+<nav aria-label="Breadcrumb"><ol class="crumbs in d1"><li><a href="/">Home</a></li><li><span aria-current="page">About</span></li></ol></nav>
+<p class="eyebrow in d1">Strength &amp; Conditioning Coach · Hamilton, Ontario</p>
+<h1 id="page-title" class="display page-title"><span class="solid in d1">Meet</span><span class="accent in d2">Ben Pascoe</span></h1>
+<p class="lede in d3">Ben Pascoe coaches personal training clients and football athletes, helping them build strength, improve movement and train with purpose. He is an NSCA Certified Strength and Conditioning Specialist.</p>
+<div class="hero-ctas in d4">
+<a class="btn btn-primary" href="#inquiry"><span>Start the Conversation</span><span class="arrow" aria-hidden="true">→</span></a>
+<a class="btn btn-glass" href="#paths"><span>Training Options</span><span class="arrow" aria-hidden="true">→</span></a>
+</div>
+</div>
+<div class="page-media glass in d3">
+<span class="hud tl" aria-hidden="true"></span><span class="hud br" aria-hidden="true"></span>
+<div class="ben-video-wrap"><video class="ben-video" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="metadata" poster="/media/meet-ben-poster.jpg" aria-label="Ben Pascoe coaching in the gym"><source src="/media/meet-ben.webm" type="video/webm"><source src="/media/meet-ben.mp4" type="video/mp4"></video></div>
+<span class="media-bar" aria-hidden="true"></span>
+</div>
+</div>
+</section>
+
+<section class="section" id="experience" aria-labelledby="experience-title">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Experience</p>
+<h2 id="experience-title" class="display h2">A decade in the weight room</h2>
+</div>
+</div>
+<div class="stats">
+<div class="stat glass reveal"><span class="stat-num">10+</span><span class="stat-label">Years of strength coaching experience</span></div>
+<div class="stat glass reveal r2"><span class="stat-num">100+</span><span class="stat-label">Ontario University Athletics (OUA) varsity athletes coached</span></div>
+<div class="stat glass reveal r3"><span class="stat-num">5+</span><span class="stat-label">Years coaching professional and semi-professional athletes across multiple sports</span></div>
+</div>
+</div>
+</section>
+
+<section class="section tone-3" id="story" aria-labelledby="story-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap bio">
+<div class="reveal">
+<p class="kicker">Ben's story</p>
+<h2 id="story-title" class="display h2">From linebacker to strength coach</h2>
+</div>
+<div class="bio-copy reveal r2">
+<p>Ben's background is in football. He played linebacker and earned All-Canadian honours.</p>
+<p>He moved into strength coaching, working with university varsity athletes and with professional and semi-professional athletes across multiple sports.</p>
+<p>Today, he coaches personal training clients at Anytime Fitness in Hamilton and Ancaster, and football athletes from high school through the professional level.</p>
+</div>
+</div>
+</section>
+
+<section class="section tone-2" id="credentials" aria-labelledby="credentials-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Credentials</p>
+<h2 id="credentials-title" class="display h2">Qualifications &amp; Experience</h2>
+</div>
+</div>
+<div class="creds creds-2">
+<div class="cred glass reveal">
+<h3 class="display">Coaching qualifications</h3>
+<ul class="check-list">
+<li>Certified Strength and Conditioning Specialist (CSCS), National Strength and Conditioning Association (NSCA)</li>
+<li>Certified Program Design Specialist · <span class="ph-text">[issuing organization]</span></li>
+</ul>
+</div>
+<div class="cred glass reveal r2">
+<h3 class="display">Playing background</h3>
+<ul class="check-list">
+<li>Former All-Canadian linebacker</li>
+<li>International Bowl MVP, 2014</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="approach" aria-labelledby="approach-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Coaching approach</p>
+<h2 id="approach-title" class="display h2">What you can expect from coaching</h2>
+</div>
+<p class="reveal r2">A clear plan, guidance during your sessions and feedback as you progress.</p>
+</div>
+<div class="creds">
+<div class="cred glass reveal">
+<h3 class="display">A conversation first</h3>
+<p class="cred-p">Talk through your goals, experience and schedule, and choose the training that fits, before any sessions begin.</p>
+</div>
+<div class="cred glass reveal r2">
+<h3 class="display">Guidance in every session</h3>
+<p class="cred-p">Exercises and technique are explained and coached as you train, in the gym or on the turf.</p>
+</div>
+<div class="cred glass reveal r3">
+<h3 class="display">Feedback as you progress</h3>
+<p class="cred-p">Review how training is going together and adjust as you move toward your next goal.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section tone-2" id="paths" aria-labelledby="paths-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Train with Ben</p>
+<h2 id="paths-title" class="display h2">Choose your training</h2>
+</div>
+</div>
+<div class="links2">
+<a class="x-card glass reveal" href="/personal-training/">
+<h3 class="display">Personal Training</h3>
+<p>For everyday gym-goers: strength, conditioning, mobility and confidence at Anytime Fitness in Hamilton and Ancaster.</p>
+<span class="x-go">Explore Personal Training <span class="arrow" aria-hidden="true">→</span></span>
+</a>
+<a class="x-card glass reveal r2" href="/football-performance/">
+<h3 class="display">Football Performance</h3>
+<p>For high school to professional athletes: speed, strength and movement, in group or one-on-one sessions.</p>
+<span class="x-go">Explore Football Performance <span class="arrow" aria-hidden="true">→</span></span>
+</a>
+</div>
+</div>
+</section>
+
+<section class="section tone-3" id="inquiry" aria-labelledby="inquiry-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Start the conversation</p>
+<h2 id="inquiry-title" class="display h2">Train with Ben</h2>
+</div>
+<p class="reveal r2">Share what you want to work toward. If you're unsure which training option fits, choose Help Me Choose.</p>
+</div>
+<div class="inquiry-grid">
+<InquiryForm preselect="" page="about" />
+<aside class="contact-card glass reveal r2" aria-label="Contact details">
+<h3 class="display">Get in touch</h3>
+<div class="c-row"><span class="c-label">Email</span><span class="c-val ph-text">[CONTACT EMAIL]</span></div>
+<div class="c-row"><span class="c-label">Phone</span><span class="c-val ph-text">[CONTACT PHONE]</span></div>
+<div class="c-row"><span class="c-label">Personal training</span><span class="c-val">Anytime Fitness, Hamilton &amp; Ancaster</span></div>
+<div class="c-row"><span class="c-label">Football training</span><span class="c-val">Turf and gym · <span class="ph-text">[VENUE NAME]</span></span></div>
+</aside>
+</div>
+</div>
+</section>
+</Base>

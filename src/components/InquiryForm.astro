@@ -1,0 +1,58 @@
+---
+// Shared inquiry form.
+// - On Netlify, submissions go to Netlify Forms automatically (data-netlify).
+// - Anywhere else (e.g. Vercel), set PUBLIC_FORM_ENDPOINT to a form service URL such as Formspree.
+// Success is shown only after the service confirms delivery.
+import { interestOptions, site } from '../data/site';
+
+interface Props {
+  preselect?: string;
+  page: string;
+}
+const { preselect = '', page } = Astro.props;
+const endpoint = site.formEndpoint;
+---
+<form
+  class="form glass reveal"
+  name="inquiry"
+  method="POST"
+  action={endpoint || '/'}
+  data-inquiry
+  data-endpoint={endpoint || '/'}
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  novalidate
+>
+  <input type="hidden" name="form-name" value="inquiry" />
+  <input type="hidden" name="page" value={page} />
+  <p class="honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+  <div class="row2">
+    <div class="field"><label for={`${page}-name`}>Your Name</label><input class="input" id={`${page}-name`} name="name" type="text" autocomplete="name" required /></div>
+    <div class="field"><label for={`${page}-email`}>Your Email</label><input class="input" id={`${page}-email`} name="email" type="email" autocomplete="email" required /></div>
+  </div>
+  <fieldset>
+    <legend class="legend">Training Interest</legend>
+    <div class="choices">
+      {interestOptions.map((o) => (
+        <label class={`choice${o.value === preselect ? ' is-on' : ''}`} for={`${page}-${o.value}`}>
+          <input type="radio" name="interest" id={`${page}-${o.value}`} value={o.value} checked={o.value === preselect} required />
+          <span class="dot" aria-hidden="true"></span>
+          <span><span class="choice-title">{o.label}</span><span class="choice-hint">{o.hint}</span></span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+  <div class="field"><label for={`${page}-phone`}>Phone <span class="opt">(optional)</span></label><input class="input" id={`${page}-phone`} name="phone" type="tel" autocomplete="tel" /></div>
+  <div class="field">
+    <label for={`${page}-goals`}>Training Goals <span class="opt">(optional)</span></label>
+    <textarea class="input" id={`${page}-goals`} name="goals" aria-describedby={`${page}-goals-help`}></textarea>
+    <p class="help" id={`${page}-goals-help`}>Share your training goals and general availability. Please do not include medical records or other sensitive information.</p>
+  </div>
+  <p class="help">For a minor, a parent or legal guardian should send the inquiry using their own contact details. Please do not include the child's identifying or medical information.</p>
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
+    <button class="btn btn-primary" type="submit"><span data-submit-label>Send Inquiry</span><span class="arrow" aria-hidden="true">→</span></button>
+    <a class="privacy-link" href="/privacy/">Read how Pascoe Performance handles your information in the Privacy Policy.</a>
+  </div>
+  <div role="status" aria-live="polite" data-form-status></div>
+</form>

@@ -1,0 +1,203 @@
+---
+import '../styles/global.css';
+import '../styles/pages/personal-training.css';
+import '../styles/enhancements.css';
+import Base from '../layouts/Base.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import FaqList from '../components/FaqList.astro';
+import faqs from '../data/faqs.json';
+---
+<Base page="personal-training" hasForm={true}>
+<section class="page-hero" id="top" aria-labelledby="page-title">
+<div class="tech-grid" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
+<div class="wrap hero-grid">
+<div>
+<nav aria-label="Breadcrumb"><ol class="crumbs in d1"><li><a href="/">Home</a></li><li><span aria-current="page">Personal Training</span></li></ol></nav>
+<p class="eyebrow in d1">Personal Training · Hamilton &amp; Ancaster</p>
+<h1 id="page-title" class="display page-title"><span class="solid in d1">Personal Training</span><span class="accent in d2">Built Around You</span></h1>
+<p class="lede in d3">Get stronger, move better and build a routine that works for you. Train with Ben at Anytime Fitness in Hamilton and Ancaster, with coaching tailored to your experience.</p>
+<p class="reassure in d3">No experience needed. Your first session starts with a movement assessment, so nothing is rushed.</p>
+<div class="hero-ctas in d4">
+<a class="btn btn-primary" href="#inquiry"><span>Ask About Personal Training</span><span class="arrow" aria-hidden="true">→</span></a>
+</div>
+</div>
+<div class="page-media glass in d3">
+<span class="hud tl" aria-hidden="true"></span><span class="hud br" aria-hidden="true"></span>
+<div class="pt-video-wrap"><video class="pt-video" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="metadata" poster="/media/personal-training-poster.jpg" aria-label="Ben Pascoe coaching a medicine ball drill and talking with a personal training client"><source src="/media/personal-training.webm" type="video/webm"><source src="/media/personal-training.mp4" type="video/mp4"></video></div>
+<span class="media-bar" aria-hidden="true"></span>
+</div>
+</div>
+</section>
+
+<section class="cred-strip" aria-label="Coach credentials">
+<div class="wrap cred-row">
+<div class="cred-item"><span class="cred-big">Ben Pascoe</span><span class="cred-txt">Your personal trainer and strength coach</span></div>
+<div class="cred-item"><span class="cred-big">CSCS</span><span class="cred-txt">NSCA Certified Strength and Conditioning Specialist</span></div>
+<div class="cred-item"><span class="cred-big">10+</span><span class="cred-txt">Years of strength coaching experience</span></div>
+</div>
+</section>
+
+<section class="section" id="who" aria-labelledby="who-title">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Who it's for</p>
+<h2 id="who-title" class="display h2">Wherever you are starting from</h2>
+</div>
+<div class="reveal r2"><p>You don’t have to be an athlete to get started. Whether you want to build strength, feel fitter or perform better, training starts from where you are now.</p></div>
+</div>
+<div class="audience">
+<div class="a-card glass reveal">
+<span class="a-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"></path></svg></span>
+<h3 class="display">Start with confidence</h3>
+<div><p>Learn the fundamentals, build good technique and feel comfortable in the gym with a clear plan and coaching at every step.</p></div>
+</div>
+<div class="a-card glass reveal r2">
+<span class="a-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v5h5"></path></svg></span>
+<h3 class="display">Get back into a routine</h3>
+<div><p>Ease back into training with a plan that meets you where you are and helps you rebuild strength and momentum.</p></div>
+</div>
+<div class="a-card glass reveal r3">
+<span class="a-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l6-6 4 4 6-8"></path><path d="M14 8h6v6"></path></svg></span>
+<h3 class="display">Take your training further</h3>
+<div><p>Bring more focus to your sessions. Refine your technique, challenge yourself and work toward your next strength or fitness goal.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section tone-3" id="goals" aria-labelledby="goals-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Training goals</p>
+<h2 id="goals-title" class="display h2">What do you want to work on?</h2>
+</div>
+<div class="reveal r2"><p>Focus on one area or combine several.</p></div>
+</div>
+<ul class="goals">
+<li class="goal glass reveal"><span class="goal-num">01</span><h3 class="display">Strength</h3><div><p>Build strength with guided weight training and a focus on good technique.</p></div></li>
+<li class="goal glass reveal r2"><span class="goal-num">02</span><h3 class="display">Conditioning</h3><div><p>Improve your stamina for workouts, daily activities and the things you enjoy.</p></div></li>
+<li class="goal glass reveal r3"><span class="goal-num">03</span><h3 class="display">Mobility &amp; movement</h3><div><p>Move more freely and improve your range of motion, control and technique.</p></div></li>
+<li class="goal glass reveal"><span class="goal-num">04</span><h3 class="display">Body composition</h3><div><p>Work toward building muscle or reducing body fat through consistent training and practical nutrition support.</p></div></li>
+<li class="goal glass reveal r2"><span class="goal-num">05</span><h3 class="display">Confidence</h3><div><p>Feel more comfortable in the gym, understand your exercises and approach each session with a clear plan.</p></div></li>
+</ul>
+</div>
+</section>
+
+<section class="section tone-2" id="how" aria-labelledby="how-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Your first step</p>
+<h2 id="how-title" class="display h2">How personal training works</h2>
+</div>
+<div class="reveal r2"><p>An inquiry leads to a conversation first. Training starts once you have agreed on a plan.</p></div>
+</div>
+<div class="steps">
+<div class="step glass reveal">
+<div class="step-num" aria-hidden="true">01</div>
+<h3 class="display">Send an inquiry</h3>
+<p>Share what you want to work on, your training experience and when you are available.</p>
+</div>
+<div class="step glass reveal r2">
+<div class="step-num" aria-hidden="true">02</div>
+<h3 class="display">Initial conversation</h3>
+<p>Talk with Ben about your goals and schedule and agree on a plan, before any training begins. <span class="ph-text">[CONFIRM: call or in person, and whether there is any cost]</span></p>
+</div>
+<div class="step glass reveal r3">
+<div class="step-num" aria-hidden="true">03</div>
+<h3 class="display">First session</h3>
+<p>Your first one-hour session includes an assessment of how you move and a body composition scan, then training begins. From there, you train with guidance and review your progress as you go.</p>
+</div>
+</div>
+<div class="facts-panel glass pt-facts reveal">
+<h3 class="display">At a glance</h3>
+<dl class="compare">
+<div><dt>Session length</dt><dd>One hour</dd></div>
+<div><dt>Location</dt><dd>Anytime Fitness, Hamilton &amp; Ancaster · <span class="ph-text">[club address(es)]</span></dd></div>
+<div><dt>First session</dt><dd>Includes a movement assessment and a body composition scan</dd></div>
+<div><dt>Booking</dt><dd><span class="ph-text">[How sessions are scheduled and availability]</span></dd></div>
+<div><dt>Ages</dt><dd>16 and older</dd></div>
+</dl>
+</div>
+</div>
+</section>
+
+<section class="section" id="nutrition" aria-labelledby="nutrition-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap nutri">
+<div class="nutri-copy reveal">
+<p class="kicker">Nutrition support</p>
+<h2 id="nutrition-title" class="display h2">Nutrition &amp; Diet Support</h2>
+<p>Build eating habits that support your energy, training and consistency. Ask Ben what nutrition guidance is included in your program.</p>
+</div>
+<div class="n-panel glass reveal r2">
+<h3 class="display">Nutrition guidance can support</h3>
+<ul class="check-list">
+<li>Sustainable eating habits</li>
+<li>Energy for your training</li>
+<li>Consistency week to week</li>
+<li>Strength and body composition goals</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="section tone-2" id="coach" aria-labelledby="coach-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap coach">
+<div class="coach-photo glass reveal">
+<span class="hud tl" aria-hidden="true"></span><span class="hud br" aria-hidden="true"></span>
+<div class="ben-video-wrap"><video class="ben-video" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="metadata" poster="/media/meet-ben-poster.jpg" aria-label="Ben Pascoe coaching in the gym"><source src="/media/meet-ben.webm" type="video/webm"><source src="/media/meet-ben.mp4" type="video/mp4"></video></div>
+</div>
+<div class="coach-copy reveal r2">
+<p class="kicker">Your trainer</p>
+<h2 id="coach-title" class="display">Train with Ben Pascoe</h2>
+<p>Ben is an NSCA Certified Strength and Conditioning Specialist and Certified Program Design Specialist with more than ten years of strength coaching experience. He coaches everyday gym-goers as well as athletes.</p>
+<a class="btn btn-glass" href="/about/"><span>More About Ben</span><span class="arrow" aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Questions</p>
+<h2 id="faq-title" class="display h2">Personal training questions</h2>
+</div>
+</div>
+<div class="faq-list reveal">
+<FaqList groups={faqs["personal-training"]} />
+</div>
+<p class="cross-link reveal">Training for football? <a href="/football-performance/">Explore Football Performance</a></p>
+</div>
+</section>
+
+<section class="section tone-3" id="inquiry" aria-labelledby="inquiry-title">
+<hr class="laser" aria-hidden="true">
+<div class="wrap">
+<div class="section-head">
+<div class="reveal">
+<p class="kicker">Start the conversation</p>
+<h2 id="inquiry-title" class="display h2">Ask about personal training</h2>
+</div>
+<p class="reveal r2">Share your goals and general availability. Ben will discuss the next step with you.</p>
+</div>
+<div class="inquiry-grid">
+<InquiryForm preselect="personal-training" page="personal-training" />
+<aside class="contact-card glass reveal r2" aria-label="Contact details">
+<h3 class="display">Get in touch</h3>
+<div class="c-row"><span class="c-label">Email</span><span class="c-val ph-text">[CONTACT EMAIL]</span></div>
+<div class="c-row"><span class="c-label">Phone</span><span class="c-val ph-text">[CONTACT PHONE]</span></div>
+<div class="c-row"><span class="c-label">Training location</span><span class="c-val">Anytime Fitness, Hamilton &amp; Ancaster</span></div>
+</aside>
+</div>
+</div>
+</section>
+</Base>

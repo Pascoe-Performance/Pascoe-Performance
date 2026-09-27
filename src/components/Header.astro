@@ -1,0 +1,46 @@
+---
+import Logo from './Logo.astro';
+import { pages, type PageKey } from '../data/site';
+
+interface Props {
+  current: PageKey;
+  contactHref: string;
+}
+const { current, contactHref } = Astro.props;
+const navKeys: PageKey[] = ['personal-training', 'football-performance', 'about'];
+---
+<header class="header">
+  <div class="wrap">
+    <div class="header-in">
+      <a class="brand" href="/" aria-label="Pascoe Performance home">
+        <Logo />
+        <span class="brand-name">Pascoe Performance</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        {navKeys.map((k) => (
+          <a class="navlink" href={pages[k].path} aria-current={current === k ? 'page' : undefined}>
+            <span class="nl">{pages[k].nav}</span>
+          </a>
+        ))}
+        <a class="navlink" href={contactHref}><span class="nl">Contact</span></a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <a class="btn btn-primary btn-sm header-cta" href={contactHref} aria-label="Start the Conversation">
+          <span class="cta-full">Start the Conversation</span><span class="cta-short" aria-hidden="true">Get Started</span>
+        </a>
+        <button class="menu-btn" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" data-menu-toggle>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-panel" aria-label="Mobile" hidden>
+      {navKeys.map((k) => (
+        <a class="m-link" href={pages[k].path} aria-current={current === k ? 'page' : undefined}>{pages[k].nav}</a>
+      ))}
+      <a class="m-link" href={contactHref}>Contact</a>
+      <div style="margin-top: 24px">
+        <a class="btn btn-primary" href={contactHref}><span>Start the Conversation</span><span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </nav>
+  </div>
+</header>

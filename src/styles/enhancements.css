@@ -1,0 +1,15 @@
+/* Small additions for the production build (loaded after the page styles). */
+
+.mobile-panel[hidden] { display: none; }
+
+/* Hero video play/pause toggle */
+.video-toggle .icon-play { display: none; }
+.video-toggle.is-paused .icon-play { display: block; }
+.video-toggle.is-paused .icon-pause { display: none; }
+
+/* Form states */
+.notice-error { border-color: #e0685c; background: rgba(224, 104, 92, .08); }
+.form button[disabled] { opacity: .6; cursor: progress; }
+
+/* Spam trap: hidden from people, visible to bots */
+.honeypot { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
