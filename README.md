@@ -51,35 +51,24 @@ git remote add origin https://github.com/<your-account>/pascoe-performance.git
 git push -u origin main
 ```
 
-## Deploy
+## Deploy (Cloudflare Pages)
 
-### Netlify (recommended)
+1. In Cloudflare: **Workers & Pages → Create → Pages → Connect to Git**, pick this repo.
+2. Build settings: framework preset **Astro**, build command `npm run build`, output directory `dist`.
+3. **Settings → Variables and Secrets** (Production), then redeploy:
+   - `RESEND_API_KEY` (type: Secret): API key from resend.com → API Keys
+   - `INQUIRY_TO`: email address that receives inquiries
+   - `INQUIRY_FROM` (optional, after a domain is verified in Resend): e.g. `Pascoe Performance <inquiries@pascoeperformance.ca>`
+   - `NODE_VERSION`: `22`
+   - `SITE_URL` and `PUBLIC_PREVIEW` as below
 
-1. In Netlify, choose **Add new site → Import an existing project** and pick the GitHub repo.
-2. Build settings are read from `netlify.toml` (`npm run build`, publish `dist`).
-3. Deploy. The inquiry form works right away through **Netlify Forms**. Submissions appear under **Forms** in the Netlify dashboard. Turn on email notifications under **Forms → Form notifications**.
+The inquiry form posts to `/api/inquiry` (`functions/api/inquiry.ts`), which emails each submission through Resend with reply-to set to the visitor.
 
-### Vercel
-
-1. In Vercel, choose **Add New → Project** and import the GitHub repo. Astro is detected automatically.
-2. Vercel has no built-in form handling. Create a free form endpoint (for example at [Formspree](https://formspree.io)) and add it as the `PUBLIC_FORM_ENDPOINT` environment variable.
-3. Note: Vercel's free Hobby plan is for non-commercial use only. A business site needs the Pro plan, or use Netlify.
-
-After any change to environment variables, redeploy so the new values are built in.
-
-## Environment variables
-
-See `.env.example`.
-
-| Variable | Purpose |
-| --- | --- |
-| `SITE_URL` | Public address of the site, e.g. `https://pascoeperformance.ca`. Used for canonical links, social previews and the sitemap. If unset, the Netlify or Vercel address is used. |
-| `PUBLIC_PREVIEW` | Defaults to preview mode: every page is marked `noindex` and `robots.txt` blocks search engines. **Set to `false` at launch.** |
-| `PUBLIC_FORM_ENDPOINT` | Only for hosts other than Netlify. Form service URL that accepts a POST. |
+Until a domain is verified in Resend, emails come from Resend's test sender and can only be delivered to the Resend account's own email address. At launch, verify the site's domain in Resend (DNS records), then set `INQUIRY_FROM` and `INQUIRY_TO`.
 
 ## Custom domain
 
-Once the domain is bought, add it in Netlify (**Domain management**) or Vercel (**Settings → Domains**), follow the DNS steps shown there, then set `SITE_URL` to the new address and redeploy.
+Once the domain is bought, add it in Cloudflare Pages (**Custom domains**), follow the DNS steps shown there, then set `SITE_URL` to the new address and redeploy.
 
 ## Editing content
 
@@ -98,6 +87,7 @@ Once the domain is bought, add it in Netlify (**Domain management**) or Vercel (
 - [ ] Add real testimonials, with written permission from each client
 - [ ] Replace the placeholder personal training video
 - [ ] Have the privacy policy reviewed and fill in the contact details it lists
+- [ ] Verify the domain in Resend, set `INQUIRY_FROM` and `INQUIRY_TO`
 - [ ] Send a test inquiry and confirm it arrives
 - [ ] Optional: self-host the Archivo font instead of loading it from Google Fonts
 - [ ] Submit `https://<domain>/sitemap.xml` in Google Search Console and create a Google Business Profile

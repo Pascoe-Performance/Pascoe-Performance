@@ -223,7 +223,7 @@ if (form) {
       return;
     }
 
-    const endpoint = form.dataset.endpoint || '/';
+    const endpoint = form.dataset.endpoint || '/api/inquiry';
     const data = new FormData(form);
     const body = new URLSearchParams();
     data.forEach((value, key) => body.append(key, String(value)));

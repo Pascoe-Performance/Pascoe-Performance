@@ -1,8 +1,8 @@
 ---
 // Shared inquiry form.
-// - On Netlify, submissions go to Netlify Forms automatically (data-netlify).
-// - Anywhere else (e.g. Vercel), set PUBLIC_FORM_ENDPOINT to a form service URL such as Formspree.
-// Success is shown only after the service confirms delivery.
+// Submissions go to /api/inquiry (functions/api/inquiry.ts on Cloudflare Pages), which emails
+// them through Resend. Set PUBLIC_FORM_ENDPOINT to send them somewhere else instead.
+// Success is shown only after delivery is confirmed.
 import { interestOptions, site } from '../data/site';
 
 interface Props {
@@ -10,20 +10,17 @@ interface Props {
   page: string;
 }
 const { preselect = '', page } = Astro.props;
-const endpoint = site.formEndpoint;
+const endpoint = site.formEndpoint || '/api/inquiry';
 ---
 <form
   class="form glass reveal"
   name="inquiry"
   method="POST"
-  action={endpoint || '/'}
+  action={endpoint}
   data-inquiry
-  data-endpoint={endpoint || '/'}
-  data-netlify="true"
-  netlify-honeypot="bot-field"
+  data-endpoint={endpoint}
   novalidate
 >
-  <input type="hidden" name="form-name" value="inquiry" />
   <input type="hidden" name="page" value={page} />
   <p class="honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
